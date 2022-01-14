@@ -15,5 +15,36 @@ $woocommerce = new Client(
 ?>
 
 <?php
- echo json_encode($woocommerce->get("products")) 
+ 
+ $getHeaders = function() use ($woocommerce){
+    $lastResponse = $woocommerce->http->getResponse();
+    return $lastResponse->getHeaders();
+ };
+
+ $listCategories = function ($page=1) use ($woocommerce, $getHeaders){
+    $data = array(
+        'data' => $woocommerce->get("products/categories", array(
+            'per_page' => 20,
+            'page' => $page)),
+        'headers' => $getHeaders());
+
+    $data['headers'] = $getHeaders();
+
+    return json_encode($data);
+ };
+
+ $listProducts = function ($page=1) use ($woocommerce, $getHeaders){
+    $data = array(
+        'data'=>$woocommerce->get("products", array(
+            "per_page" => 20,
+            "page" => $page)),
+        'headers' => $getHeaders());
+
+    
+    return json_encode($data);
+ };
+
+
  ?>
+
+

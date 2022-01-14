@@ -41,7 +41,7 @@ if(isset($_POST['login'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="http://localhost/product/secret/styles/login.css">
     <title>Login</title>
 </head>
 <body>
@@ -51,14 +51,12 @@ if(isset($_POST['login'])){
             <input type="text" name="name">
         </div>
         <div class="form-field">
-            <label for="password">password</label>
+            <label for="password">Password</label>
             <input type="password" name="password">
         </div>
         <div class="form-field">
             <input type="submit" name="login" value="login">
         </div>
-
-    
     </form>
     <div id="display errors"><?php if($error) echo $error?></div>
 </body>
